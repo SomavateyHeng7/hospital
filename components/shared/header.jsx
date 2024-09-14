@@ -9,10 +9,10 @@ const Header = () => {
     <header className="bg-blue-600 text-white py-4 shadow-md">
       <div className="container mx-auto flex justify-between items-center">
         {/* Hospital Logo and Name */}
-        <div className="flex items-center">
+        {/* <div className="flex items-center">
           <img src="/images/logo.png" alt="Hospital Logo" className="h-12 w-12 mr-3" />
           <h1 className="text-2xl font-bold">Hospital Name</h1>
-        </div>
+        </div> */}
 
         {/* Navigation Links */}
         <nav className="hidden md:flex space-x-6">
