@@ -5,6 +5,10 @@ import { useRouter } from 'next/navigation';
 const Header = () => {
   const router = useRouter(); 
 
+  const handleRedirect = (path) => {
+    router.push(('/home/' + path));
+  }
+
   return (
     <header className="bg-blue-600 text-white py-4 shadow-md">
       <div className="container mx-auto flex justify-between items-center">
@@ -15,27 +19,28 @@ const Header = () => {
         </div> */}
 
         {/* Navigation Links */}
+        
         <nav className="hidden md:flex space-x-6">
-          <Button variant="ghost" className="text-white">
+          <Button variant="ghost" className="text-white" onClick={() => handleRedirect('/')}>
             Home
           </Button>
-          <Button variant="ghost" className="text-white">
+          <Button variant="ghost" className="text-white" onClick={() => handleRedirect('/services')}>
             Services
           </Button>
-          <Button variant="ghost" className="text-white">
+          <Button variant="ghost" className="text-white" onClick={() => handleRedirect('/departments')}>
             Departments
           </Button>
-          <Button variant="ghost" className="text-white">
-            Doctors
+          <Button variant="ghost" className="text-white" onClick={() => handleRedirect('/about')}>
+            About
           </Button>
-          <Button variant="ghost" className="text-white">
+          <Button variant="ghost" className="text-white" onClick={() => handleRedirect('/contact-us')}>
             Contact Us
           </Button>
         </nav>
 
         {/* Call to Action */}
         <div className="flex items-center space-x-4">
-          <Button variant="solid" className="bg-white text-blue-600">
+          <Button variant="solid" className="bg-white text-blue-600" onClick={() => handleRedirect('/book-appointment')}>
             Book Appointment
           </Button>
         </div>
