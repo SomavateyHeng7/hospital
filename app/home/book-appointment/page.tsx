@@ -1,14 +1,19 @@
+import BookAppointment from "@/components/ui/Book-Appointment/book-appointment";
+import Form from "@/components/ui/Book-Appointment/form";
+
 export default function BookAppointmentPage() {
+  // fetch doctors from database
+  const doctors = [
+    { name: "Dr. John Doe" },
+    { name: "Dr. Jane Doe" },
+    { name: "Dr. James Smith" },
+    { name: "Dr. Sarah Johnson" },
+  ];
+
   return (
     <div>
-      <section className="bg-gray-100 py-16">
-        <div className="container mx-auto text-center">
-          <h2 className="text-4xl font-bold text-gray-800">Book Appointment</h2>
-          <p className="mt-4 text-lg text-gray-600 max-w-2xl mx-auto">
-            Book an appointment with one of our doctors.
-          </p>
-        </div>
-      </section>
+      <BookAppointment />
+      <Form doctors={doctors} />
     </div>
   );
 }

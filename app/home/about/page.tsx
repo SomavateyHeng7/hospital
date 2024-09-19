@@ -1,14 +1,18 @@
+import About from "@/components/ui/About/about";
+import DoctorList from "@/components/ui/About/doctor-list";
+
 export default function AboutPage() {
+  // fetch doctors from database
+  const doctors = [
+    { name: "Dr. John Doe", profession: "Cardiologist" },
+    { name: "Dr. Jane Doe", profession: "Neurologist" },
+    { name: "Dr. James Smith", profession: "Pediatrician" },
+    { name: "Dr. Sarah Johnson", profession: "Dermatologist" },
+  ];
   return (
     <div>
-      <section className="bg-gray-100 py-16">
-        <div className="container mx-auto text-center">
-          <h2 className="text-4xl font-bold text-gray-800">About Us</h2>
-          <p className="mt-4 text-lg text-gray-600 max-w-2xl mx-auto">
-            We are a hospital that provides the best healthcare services.
-          </p>
-        </div>
-      </section>
+      <About />
+      <DoctorList doctors={doctors} />
     </div>
   );
 }
