@@ -1,5 +1,5 @@
-import About from "@/components/ui/About/about";
-import DoctorList from "@/components/ui/About/doctor-list";
+import About from "@/components/ui/Home/About/about";
+import DoctorList from "@/components/ui/Home/About/doctor-list";
 
 export default function AboutPage() {
   // fetch doctors from database

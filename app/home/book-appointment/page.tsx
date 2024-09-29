@@ -1,5 +1,5 @@
-import BookAppointment from "@/components/ui/Book-Appointment/book-appointment";
-import Form from "@/components/ui/Book-Appointment/form";
+import BookAppointment from "@/components/ui/Home/Book-Appointment/book-appointment";
+import Form from "@/components/ui/Home/Book-Appointment/form";
 
 export default function BookAppointmentPage() {
   // fetch doctors from database
