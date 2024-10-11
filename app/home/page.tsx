@@ -1,9 +1,21 @@
+'use client'
 import Header from "@/components/shared/Header";
 import Footer from "@/components/shared/Footer";
 import Navbar from "@/components/shared/NavBar";
 import { Button } from "@/components/ui/button";
+import { useRouter } from "next/navigation";
 
 const HomePage = () => {
+  const router = useRouter();
+
+  // Function to handle button click
+  const handleBookAppointment = () => {
+    router.push("/home/book-appointment"); // Redirect to book-appointment
+  };
+  const handleContactUs = () => {
+    router.push("/home/contact-us"); // Redirect to contact-us
+  };
+
   return (
     <div>
       {/* Hero Section */}
@@ -16,7 +28,10 @@ const HomePage = () => {
             Dedicated to providing the best healthcare services for you and your
             family.
           </p>
-          <Button className="mt-6 bg-blue-600 text-white px-6 py-3">
+          <Button 
+            className="mt-6 bg-blue-600 text-white px-6 py-3"
+            onClick={handleBookAppointment}
+          >
             Book an Appointment
           </Button>
         </div>
@@ -78,7 +93,7 @@ const HomePage = () => {
           <p className="mt-4 text-lg text-gray-600">
             Have questions? Need assistance? Contact us today.
           </p>
-          <Button className="mt-6 bg-blue-600 text-white px-6 py-3">
+          <Button className="mt-6 bg-blue-600 text-white px-6 py-3" onClick={handleContactUs}>
             Contact Us
           </Button>
         </div>
