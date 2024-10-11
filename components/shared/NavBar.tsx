@@ -18,7 +18,7 @@ const Navbar: FC = () => {
     <nav className="bg-white shadow-md py-4">
       <div className="container mx-auto flex justify-between items-center">
         <div className="flex items-center">
-          <img src="/images/logo.png" alt="Hospital Logo" className="h-12 w-12 mr-3" />
+          <img src="/images/Logo_psp.png" alt="Hospital Logo" className="h-12 w-12 mr-3" />
           <h1 className="text-2xl font-bold">Hospital Name</h1>
         </div>
         {/* Search Bar */}

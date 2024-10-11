@@ -27,9 +27,6 @@ const Header = () => {
           <Button variant="ghost" className="text-white" onClick={() => handleRedirect('/services')}>
             Services
           </Button>
-          <Button variant="ghost" className="text-white" onClick={() => handleRedirect('/departments')}>
-            Departments
-          </Button>
           <Button variant="ghost" className="text-white" onClick={() => handleRedirect('/about')}>
             About
           </Button>
