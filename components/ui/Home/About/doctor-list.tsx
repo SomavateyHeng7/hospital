@@ -1,5 +1,5 @@
 import Image from "next/image";
-import defaultProfile from "@/assets/doctor-image/default-profile.jpg";
+import defaultProfile from "@/public/doctors/default-profile.jpg";
 
 interface Doctor {
   name: string;
@@ -8,7 +8,7 @@ interface Doctor {
 }
 
 export default function DoctorList(props: { doctors: Doctor[] }) {
-  const defaultProfile = "/images/doctors/default-profile.jpg";
+  const defaultProfile = "/public/doctors/default-profile.jpg";
   return (
     <section className="py-16 bg-white">
       <div className="container mx-auto text-center">

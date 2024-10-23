@@ -1,17 +1,32 @@
-'use client'; 
+'use client';
 
 import { FC, useState } from 'react';
-import { Button } from '@/components/ui/button'; 
-import { Input } from '@/components/ui/input'; 
+import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
 import { useRouter } from 'next/navigation';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'; // Import FontAwesomeIcon component
+import { faUserCircle } from '@fortawesome/free-regular-svg-icons'; // Import specific user-circle icon
 
 const Navbar: FC = () => {
   const [searchQuery, setSearchQuery] = useState('');
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const router = useRouter();
 
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();
-    console.log('Search query:', searchQuery); 
+    console.log('Search query:', searchQuery);
+  };
+
+  const toggleDropdown = () => {
+    setIsDropdownOpen(!isDropdownOpen);
+  };
+
+  const handleLogin = () => {
+    router.push('/authentication/login'); // Navigate to the login page
+  };
+
+  const handleSignup = () => {
+    router.push('/authentication/signup'); // Navigate to the signup page
   };
 
   return (
@@ -32,6 +47,31 @@ const Navbar: FC = () => {
           />
           <Button type="submit">Search</Button>
         </form>
+        {/* Profile Icon */}
+        <div className="relative">
+          <FontAwesomeIcon
+            icon={faUserCircle}
+            className="h-10 w-10 text-gray-500 cursor-pointer" // Styling similar to the previous profile image
+            onClick={toggleDropdown}
+          />
+          {/* Dropdown Menu */}
+          {isDropdownOpen && (
+            <div className="absolute right-0 mt-2 w-48 bg-white shadow-lg rounded-md py-2">
+              <button
+                onClick={handleLogin}
+                className="block w-full text-left px-4 py-2 hover:bg-gray-100"
+              >
+                Login
+              </button>
+              <button
+                onClick={handleSignup}
+                className="block w-full text-left px-4 py-2 hover:bg-gray-100"
+              >
+                Create Account
+              </button>
+            </div>
+          )}
+        </div>
       </div>
     </nav>
   );

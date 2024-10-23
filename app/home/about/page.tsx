@@ -1,24 +1,23 @@
-import About from "@/components/ui/Home/About/about";
 import DoctorList from "@/components/ui/Home/About/doctor-list";
 
 export default function AboutPage() {
-  // fetch doctors from database
+  // Fetch doctors from the database (currently using static data)
   const doctors = [
     {
       name: "Dr. LONG SOPHEA",
       profession: "DERMATOLOGIST",
-      image: "/images/doctors/john.jpeg",
+      image: "/doctors/john.jpeg",
     },
     { name: "Dr. CHHAR BUNPAUL", profession: "PULMONOLOGIST", image: "" },
     {
       name: "Dr. SIM SOKCHAN",
       profession: "NEURO-SURGEON",
-      image: "/images/doctors/james.png",
+      image: "/doctors/james.png",
     },
     {
       name: "Dr. HOK TOLA",
       profession: "NEUROLOGIST",
-      image: "/images/doctors/sarah.jpg",
+      image: "/doctors/sarah.jpg",
     },
     { name: "Dr. OUNG MONYRAKSMEY", profession: "GY-OBSTETRICIAN", image: "" },
     { name: "Dr. MENG MAKARA", profession: "GENERAL PHYSICIAN", image: "" },
@@ -28,10 +27,25 @@ export default function AboutPage() {
     { name: "Dr. KEO VANNARITH", profession: "CANCEROLOGIST", image: "" },
     { name: "Dr. CHEA HUY", profession: "TRAUMATOLOGIST", image: "" },
   ];
+
   return (
     <div>
       <About />
       <DoctorList doctors={doctors} />
     </div>
+  );
+}
+
+// About Component
+function About() {
+  return (
+    <section className="bg-gray-100 py-16">
+      <div className="container mx-auto text-center">
+        <h2 className="text-4xl font-bold text-gray-800">About Us</h2>
+        <p className="mt-4 text-lg text-gray-600 max-w-2xl mx-auto">
+          We are a hospital that provides the best healthcare services.
+        </p>
+      </div>
+    </section>
   );
 }
