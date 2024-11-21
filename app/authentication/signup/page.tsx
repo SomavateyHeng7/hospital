@@ -1,8 +1,8 @@
-'use client';
+"use client";
 
 import { useState } from "react";
-import { useRouter } from 'next/navigation'; // Import useRouter from next/navigation
-import Link from 'next/link'; // Import Link from next/link
+import { useRouter } from "next/navigation"; // Import useRouter from next/navigation
+import Link from "next/link"; // Import Link from next/link
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 
@@ -34,10 +34,10 @@ const Register = () => {
       const payload = { name, email, password, confirmPassword };
 
       // Make API request to register the user
-      const response = await fetch('/api/signup', {
-        method: 'POST',
+      const response = await fetch("/api/auth/signup", {
+        method: "POST",
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
         },
         body: JSON.stringify(payload),
       });
@@ -50,7 +50,7 @@ const Register = () => {
       }
 
       // After successful registration, redirect to the login page
-      router.push('/auth/login'); // Redirect to login after registration
+      router.push("/authentication/login"); // Redirect to login after registration
     } catch (err) {
       setError("Failed to register. Please try again.");
     }
@@ -150,7 +150,10 @@ const Register = () => {
 
           {/* Sign In Link */}
           <div className="text-center pt-4">
-            <Link href="/auth/login" className="text-[#2b5e9f] hover:underline">
+            <Link
+              href="/authentication/login"
+              className="text-[#2b5e9f] hover:underline"
+            >
               Already have an account? Sign In
             </Link>
           </div>

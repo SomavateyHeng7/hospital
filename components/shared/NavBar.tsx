@@ -1,20 +1,20 @@
-'use client';
+"use client";
 
-import { FC, useState } from 'react';
-import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
-import { useRouter } from 'next/navigation';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'; // Import FontAwesomeIcon component
-import { faUserCircle } from '@fortawesome/free-regular-svg-icons'; // Import specific user-circle icon
+import { FC, useState } from "react";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { useRouter } from "next/navigation";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"; // Import FontAwesomeIcon component
+import { faUserCircle } from "@fortawesome/free-regular-svg-icons"; // Import specific user-circle icon
 
 const Navbar: FC = () => {
-  const [searchQuery, setSearchQuery] = useState('');
+  const [searchQuery, setSearchQuery] = useState("");
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const router = useRouter();
 
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();
-    console.log('Search query:', searchQuery);
+    console.log("Search query:", searchQuery);
   };
 
   const toggleDropdown = () => {
@@ -22,18 +22,22 @@ const Navbar: FC = () => {
   };
 
   const handleLogin = () => {
-    router.push('/authentication/login'); // Navigate to the login page
+    router.push("/authentication/login"); // Navigate to the login page
   };
 
   const handleSignup = () => {
-    router.push('/authentication/signup'); // Navigate to the signup page
+    router.push("/authentication/signup"); // Navigate to the signup page
   };
 
   return (
     <nav className="bg-white shadow-md py-4">
       <div className="container mx-auto flex justify-between items-center">
         <div className="flex items-center">
-          <img src="/images/Logo_psp.png" alt="Hospital Logo" className="h-12 w-12 mr-3" />
+          <img
+            src="/images/Logo_psp.png"
+            alt="Hospital Logo"
+            className="h-12 w-12 mr-3"
+          />
           <h1 className="text-2xl font-bold">Hospital Name</h1>
         </div>
         {/* Search Bar */}
@@ -42,7 +46,9 @@ const Navbar: FC = () => {
             type="text"
             placeholder="Search..."
             value={searchQuery}
-            onChange={(e: React.ChangeEvent<HTMLInputElement>) => setSearchQuery(e.target.value)}
+            onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+              setSearchQuery(e.target.value)
+            }
             className="w-72"
           />
           <Button type="submit">Search</Button>

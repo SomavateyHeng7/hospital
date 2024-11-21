@@ -1,12 +1,12 @@
-'use client';
+"use client";
 
 import { useState } from "react";
-import { useRouter } from 'next/navigation'; 
-import Link from 'next/link'; // Import Link from next/link
-import Cookies from 'js-cookie'; // Import js-cookie for client-side cookie handling
+import { useRouter } from "next/navigation";
+import Link from "next/link"; // Import Link from next/link
+import Cookies from "js-cookie"; // Import js-cookie for client-side cookie handling
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import Image from 'next/image'; // Import Image from next/image
+import Image from "next/image"; // Import Image from next/image
 
 const SignIn = () => {
   const [email, setEmail] = useState("");
@@ -25,10 +25,10 @@ const SignIn = () => {
 
     try {
       // Send the login request to the API
-      const response = await fetch('/api/login', {
-        method: 'POST',
+      const response = await fetch("/api/auth/login", {
+        method: "POST",
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
         },
         body: JSON.stringify({ email, password }),
       });
@@ -41,10 +41,10 @@ const SignIn = () => {
       }
 
       // Store the token in client-side cookies using js-cookie
-      Cookies.set('token', result.token, { expires: 1 });
+      Cookies.set("token", result.token, { expires: 1 });
 
       // Navigate to the home page or any other protected route
-      router.push('/');
+      router.push("/");
     } catch (err) {
       setError("Failed to sign in");
     }
@@ -116,7 +116,10 @@ const SignIn = () => {
 
           {/* Register Link */}
           <div className="text-center pt-4">
-            <Link href="/auth/signup" className="text-[#2b5e9f] hover:underline">
+            <Link
+              href="/authentication/signup"
+              className="text-[#2b5e9f] hover:underline"
+            >
               Don't have an account? Register
             </Link>
           </div>
