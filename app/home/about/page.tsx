@@ -1,4 +1,4 @@
-import DoctorList from "@/components/ui/Home/About/doctor-list";
+import DoctorList from "@/components/home/about/doctor-list";
 
 export default function AboutPage() {
   // Fetch doctors from the database (currently using static data)
@@ -30,22 +30,15 @@ export default function AboutPage() {
 
   return (
     <div>
-      <About />
+      <section className="bg-gray-100 py-16">
+        <div className="container mx-auto text-center">
+          <h2 className="text-4xl font-bold text-gray-800">About Us</h2>
+          <p className="mt-4 text-lg text-gray-600 max-w-2xl mx-auto">
+            We are a hospital that provides the best healthcare services.
+          </p>
+        </div>
+      </section>
       <DoctorList doctors={doctors} />
     </div>
-  );
-}
-
-// About Component
-function About() {
-  return (
-    <section className="bg-gray-100 py-16">
-      <div className="container mx-auto text-center">
-        <h2 className="text-4xl font-bold text-gray-800">About Us</h2>
-        <p className="mt-4 text-lg text-gray-600 max-w-2xl mx-auto">
-          We are a hospital that provides the best healthcare services.
-        </p>
-      </div>
-    </section>
   );
 }

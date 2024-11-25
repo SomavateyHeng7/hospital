@@ -1,5 +1,4 @@
-import BookAppointment from "@/components/ui/Home/Book-Appointment/book-appointment";
-import Form from "@/components/ui/Home/Book-Appointment/form";
+import Form from "@/components/home/book-appointment/form";
 
 export default function BookAppointmentPage() {
   // fetch doctors from database
@@ -15,12 +14,18 @@ export default function BookAppointmentPage() {
     { name: "Dr. HUOT TINGHUY (PEDIATRICIAN)" },
     { name: "Dr. KEO VANNARITH (CANCEROLOGIST)" },
     { name: "Dr. CHEA HUY (TRAUMATOLOGIST)" },
-    
   ];
 
   return (
     <div>
-      <BookAppointment />
+      <section className="bg-gray-100 py-16">
+        <div className="container mx-auto text-center">
+          <h2 className="text-4xl font-bold text-gray-800">Book Appointment</h2>
+          <p className="mt-4 text-lg text-gray-600 max-w-2xl mx-auto">
+            Book an appointment with one of our doctors.
+          </p>
+        </div>
+      </section>
       <Form doctors={doctors} />
     </div>
   );

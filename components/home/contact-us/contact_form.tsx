@@ -1,8 +1,4 @@
-interface Doctor {
-  name: string;
-}
-
-export default function Form(props: { doctors: Doctor[] }) {
+export default function ContactForm() {
   return (
     <div>
       <section className="py-16 bg-white">
@@ -19,7 +15,21 @@ export default function Form(props: { doctors: Doctor[] }) {
                 className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                 id="name"
                 type="text"
-                placeholder="Your name"
+                placeholder="Given name"
+              />
+            </div>
+            <div className="mb-4">
+              <label
+                className="block text-gray-700 text-sm font-bold mb-2"
+                htmlFor="name"
+              >
+                Surname
+              </label>
+              <input
+                className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                id="name"
+                type="text"
+                placeholder="Surname"
               />
             </div>
             <div className="mb-4">
@@ -36,54 +46,27 @@ export default function Form(props: { doctors: Doctor[] }) {
                 placeholder="Your email"
               />
             </div>
+
             <div className="mb-4">
               <label
                 className="block text-gray-700 text-sm font-bold mb-2"
-                htmlFor="date"
+                htmlFor="message"
               >
-                Appointment Date
+                Message
               </label>
               <input
                 className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                id="date"
-                type="date"
+                id="message"
+                type="text"
+                placeholder="Write your message here"
               />
-            </div>
-            <div className="mb-4">
-              <label
-                className="block text-gray-700 text-sm font-bold mb-2"
-                htmlFor="time"
-              >
-                Appointment Time
-              </label>
-              <input
-                className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                id="time"
-                type="time"
-              />
-            </div>
-            <div className="mb-4">
-              <label
-                className="block text-gray-700 text-sm font-bold mb-2"
-                htmlFor="doctor"
-              >
-                Doctor
-              </label>
-              <select
-                className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                id="doctor"
-              >
-                {props.doctors.map((doctor, index) => (
-                  <option key={index}>{doctor.name}</option>
-                ))}
-              </select>
             </div>
             <div className="flex items-center justify-between">
               <button
                 className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
                 type="button"
               >
-                Book Appointment
+                Send message
               </button>
             </div>
           </form>
