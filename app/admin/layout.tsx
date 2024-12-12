@@ -1,6 +1,5 @@
 import { Inter } from "next/font/google";
-import "./global.css";
-import { AppRouterCacheProvider } from "@mui/material-nextjs/v14-appRouter";
+import { AppRouterCacheProvider } from '@mui/material-nextjs/v14-appRouter';
 
 // Initialize Inter font
 const inter = Inter({ subsets: ["latin"] });
@@ -20,8 +19,12 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
+      
       <body className={inter.className}>
-        <AppRouterCacheProvider>{children}</AppRouterCacheProvider>
+      <AppRouterCacheProvider>
+        
+        {children}
+        </AppRouterCacheProvider>
       </body>
     </html>
   );

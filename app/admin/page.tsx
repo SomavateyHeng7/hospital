@@ -1,6 +1,6 @@
 "use client";
 
-import Sidebar from "@/components/admin/admin/sidebar";
+import Sidebar from "../../components/admin/Sidebar";
 import Footer from "@/components/shared/Footer";
 import React from "react";
 
@@ -50,6 +50,11 @@ export default function AdminPage() {
             <h2 className="text-2xl font-semibold mb-2">Revenue</h2>
             <p className="text-xl">$120,000</p>
             <p className="text-sm text-gray-500">Total revenue this month</p>
+          </div>
+          <div className="bg-white shadow-lg p-6 rounded-lg">
+            <h2 className="text-2xl font-semibold mb-2">Bills</h2>
+            <p className="text-xl">$240000</p>
+            <p className="text-sm text-gray-500">Bill payment this month</p>
           </div>
         </div>
       </div>
