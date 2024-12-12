@@ -116,25 +116,17 @@ const Sidebar = () => {
 
             {/* Billing & Invoicing */}
             <ListItem disablePadding>
-              <ListItemButton component={Link} href="/admin/Invoice" passHref>
-                <ListItemIcon>
-                  <AttachMoney />
-                </ListItemIcon>
-                <ListItemText primary="Invoicing" />
-              </ListItemButton>
-            </ListItem>
-            <ListItem disablePadding>
               <ListItemButton component={Link} href="/admin/Finance" passHref>
                 <ListItemIcon>
                   <AttachMoney />
                 </ListItemIcon>
-                <ListItemText primary="Billing" />
+                <ListItemText primary="Billing & Invoicing" />
               </ListItemButton>
             </ListItem>
 
             {/* Pharmacy Management */}
             <ListItem disablePadding>
-              <ListItemButton component={Link} href="/admin/medicineInventory" passHref>
+              <ListItemButton component={Link} href="/pharmacy" passHref>
                 <ListItemIcon>
                   <Inventory />
                 </ListItemIcon>
@@ -144,7 +136,7 @@ const Sidebar = () => {
 
             {/* Laboratory Management */}
             <ListItem disablePadding>
-              <ListItemButton component={Link} href="/admin/laboratory" passHref>
+              <ListItemButton component={Link} href="/laboratory" passHref>
                 <ListItemIcon>
                   <Science />
                 </ListItemIcon>
