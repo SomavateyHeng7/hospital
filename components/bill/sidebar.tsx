@@ -15,21 +15,15 @@ import {
   useTheme,
 } from "@mui/material";
 import {
-  Home,
-  People,
-  LocalHospital,
-  Event,
-  Inventory,
-  Menu,
   AttachMoney,
-  Science,
-  MedicalServices,
   BarChart,
-  Business,
-  AccountBalance,
+  Menu,
+  Logout,
+  ReceiptLong,
+  LocalPharmacy,
+  MedicalServices,
   Brightness4,
   Brightness7,
-  Logout,
 } from "@mui/icons-material";
 import Link from "next/link";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
@@ -47,7 +41,6 @@ const Sidebar = () => {
   };
 
   const handleSignOut = () => {
-    // Add your sign-out logic here
     console.log("Sign out");
   };
 
@@ -81,106 +74,46 @@ const Sidebar = () => {
               alt="Hospital Logo"
               style={{ width: 40, height: 40, marginRight: 10 }}
             />
-            <Typography variant="h6">Hospital Name</Typography>
+            <Typography variant="h6">Billing Officer</Typography>
           </Box>
           <List>
-            {/* Patient Management */}
+            {/* Admission Bill */}
             <ListItem disablePadding>
-              <ListItemButton component={Link} href="/admin/patients" passHref>
-                <ListItemIcon>
-                  <People />
-                </ListItemIcon>
-                <ListItemText primary="Patient Management" />
-              </ListItemButton>
-            </ListItem>
-
-            {/* EHR (Electronic Health Records) */}
-            <ListItem disablePadding>
-              <ListItemButton component={Link} href="/admin/ehr" passHref>
+              <ListItemButton component={Link} href="/BillingOfficer/AdmissionBill" passHref>
                 <ListItemIcon>
                   <MedicalServices />
                 </ListItemIcon>
-                <ListItemText primary="EHR" />
+                <ListItemText primary="Admission Bill" />
               </ListItemButton>
             </ListItem>
 
-            {/* Appointment Scheduling */}
+            {/* Financial Report */}
             <ListItem disablePadding>
-              <ListItemButton component={Link} href="/appointments" passHref>
-                <ListItemIcon>
-                  <Event />
-                </ListItemIcon>
-                <ListItemText primary="Appointment Scheduling" />
-              </ListItemButton>
-            </ListItem>
-
-            {/* Billing & Invoicing */}
-            <ListItem disablePadding>
-              <ListItemButton component={Link} href="/admin/Finance" passHref>
-                <ListItemIcon>
-                  <AttachMoney />
-                </ListItemIcon>
-                <ListItemText primary="Billing & Invoicing" />
-              </ListItemButton>
-            </ListItem>
-
-            {/* Pharmacy Management */}
-            <ListItem disablePadding>
-              <ListItemButton component={Link} href="/admin/medicineInventory" passHref>
-                <ListItemIcon>
-                  <Inventory />
-                </ListItemIcon>
-                <ListItemText primary="Pharmacy Management" />
-              </ListItemButton>
-            </ListItem>
-
-            {/* Laboratory Management */}
-            <ListItem disablePadding>
-              <ListItemButton component={Link} href="/admin/laboratory" passHref>
-                <ListItemIcon>
-                  <Science />
-                </ListItemIcon>
-                <ListItemText primary="Laboratory Management" />
-              </ListItemButton>
-            </ListItem>
-
-            {/* Inventory & Supply Chain */}
-            <ListItem disablePadding>
-              <ListItemButton component={Link} href="/inventory" passHref>
-                <ListItemIcon>
-                  <Inventory />
-                </ListItemIcon>
-                <ListItemText primary="Inventory & Supply Chain" />
-              </ListItemButton>
-            </ListItem>
-
-            {/* Radiology & Imaging */}
-            <ListItem disablePadding>
-              <ListItemButton component={Link} href="/admin/radiology" passHref>
-                <ListItemIcon>
-                  <LocalHospital />
-                </ListItemIcon>
-                <ListItemText primary="Radiology & Imaging" />
-              </ListItemButton>
-            </ListItem>
-
-            {/* Staff Management & HR */}
-            <ListItem disablePadding>
-              <ListItemButton component={Link} href="/staff-management" passHref>
-                <ListItemIcon>
-                  <Business />
-                </ListItemIcon>
-                <ListItemText primary="Staff Management & HR" />
-              </ListItemButton>
-            </ListItem>
-
-            {/* Reporting & Analytics */}
-            <ListItem disablePadding>
-              <ListItemButton component={Link} href="/reporting" passHref>
+              <ListItemButton component={Link} href="/BillingOfficer/FinancialReport" passHref>
                 <ListItemIcon>
                   <BarChart />
                 </ListItemIcon>
-                <ListItemText primary="Reporting & Analytics" />
+                <ListItemText primary="Financial Report" />
+              </ListItemButton>
+            </ListItem>
+
+            {/* Invoice */}
+            <ListItem disablePadding>
+              <ListItemButton component={Link} href="/BillingOfficer/Invoice" passHref>
+                <ListItemIcon>
+                  <ReceiptLong />
+                </ListItemIcon>
+                <ListItemText primary="Invoice" />
+              </ListItemButton>
+            </ListItem>
+
+            {/* Pharmacy Bill */}
+            <ListItem disablePadding>
+              <ListItemButton component={Link} href="/BillingOfficer/pharmacyBill" passHref>
+                <ListItemIcon>
+                  <LocalPharmacy />
+                </ListItemIcon>
+                <ListItemText primary="Pharmacy Bill" />
               </ListItemButton>
             </ListItem>
           </List>
@@ -210,7 +143,7 @@ const Sidebar = () => {
 
 // Theme Toggle Wrapper Component
 export default function SidebarWrapper() {
-  const [mode, setMode] = useState("light");
+  const [mode, setMode] = useState<"light" | "dark">("light");
 
   const colorMode = React.useMemo(
     () => ({

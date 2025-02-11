@@ -1,27 +1,74 @@
 "use client";
 
 import React, { useState } from "react";
+import {
+  FaFileInvoice, FaFileMedical, FaMoneyBill, FaCapsules, FaSignOutAlt
+} from "react-icons/fa";
 
-interface Invoice {
-  id: number;
-  invoiceNo: string;
-  customer: string;
-  sex: string;
-  age: string;
-  amount: string;
-  discount: string;
-  total: string;
-  paid: string;
-  paymentType: string;
-  remain: string;
-  date: string;
-  paymentStatus: string;
-}
+// Sidebar Menu Items
+const menuItems = [
+  { name: "Admission Bill", icon: <FaFileMedical />, id: "admission-bill" },
+  { name: "Financial Report", icon: <FaMoneyBill />, id: "financial-report" },
+  { name: "Invoice", icon: <FaFileInvoice />, id: "invoice" },
+  { name: "Pharmacy Bill", icon: <FaCapsules />, id: "pharmacy-bill" },
+];
 
-const Finance: React.FC = () => {
+const FinanceDashboard: React.FC = () => {
+  const [activePage, setActivePage] = useState<string>("invoice");
+
+  return (
+    <div className="flex h-screen bg-gray-100">
+      {/* Sidebar */}
+      <div className="w-64 bg-white shadow-lg flex flex-col p-4">
+        {/* Logo & Hospital Name */}
+        <div className="flex flex-col items-center mb-6">
+          <img src="/hospital-logo.png" alt="Hospital Logo" className="w-16 h-16 rounded-full border" />
+          <h1 className="text-lg font-bold mt-2">Hospital Name</h1>
+        </div>
+
+        {/* Sidebar Menu */}
+        <nav className="flex-1">
+          {menuItems.map((item) => (
+            <div
+              key={item.id}
+              className={`flex items-center gap-3 p-3 text-gray-700 rounded-lg cursor-pointer transition ${
+                activePage === item.id ? "bg-gray-200 text-black" : "hover:bg-gray-100"
+              }`}
+              onClick={() => setActivePage(item.id)}
+            >
+              <span className="text-lg">{item.icon}</span>
+              <span className="text-sm">{item.name}</span>
+            </div>
+          ))}
+        </nav>
+
+        {/* Sign Out Button */}
+        <button className="mt-6 w-full bg-red-600 text-white flex items-center justify-center gap-3 py-3 rounded-lg hover:bg-red-700">
+          <FaSignOutAlt />
+          SIGN OUT
+        </button>
+      </div>
+
+      {/* Main Content */}
+      <div className="flex-1 p-6">
+        {activePage === "admission-bill" && <AdmissionBill />}
+        {activePage === "financial-report" && <FinancialReport />}
+        {activePage === "invoice" && <Invoice />}
+        {activePage === "pharmacy-bill" && <PharmacyBill />}
+      </div>
+    </div>
+  );
+};
+
+// Dummy Components for Each Page (Replace with Real Content)
+const AdmissionBill = () => <h1 className="text-2xl font-bold">Admission Bill Page</h1>;
+const FinancialReport = () => <h1 className="text-2xl font-bold">Financial Report Page</h1>;
+
+// Invoice Component (Your Original Finance Component)
+const Invoice: React.FC = () => {
   const [search, setSearch] = useState<string>("");
 
-  const invoices: Invoice[] = [
+  const invoices = [
     {
       id: 1,
       invoiceNo: "INV00115403",
@@ -52,7 +99,6 @@ const Finance: React.FC = () => {
       date: "09/12/2024 14:40",
       paymentStatus: "Unpaid",
     },
-    // Add more sample data here
   ];
 
   const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -103,63 +149,36 @@ const Finance: React.FC = () => {
       <table className="table-auto border-collapse border border-gray-200 w-full text-left">
         <thead>
           <tr className="bg-gray-100">
-            <th className="border border-gray-300 px-4 py-2">Action</th>
-            <th className="border border-gray-300 px-4 py-2">No.</th>
-            <th className="border border-gray-300 px-4 py-2">Invoice</th>
+            <th className="border border-gray-300 px-4 py-2">Invoice No</th>
             <th className="border border-gray-300 px-4 py-2">Customer</th>
-            <th className="border border-gray-300 px-4 py-2">Sex</th>
-            <th className="border border-gray-300 px-4 py-2">Age</th>
-            <th className="border border-gray-300 px-4 py-2">Amount</th>
-            <th className="border border-gray-300 px-4 py-2">Discount</th>
             <th className="border border-gray-300 px-4 py-2">Total</th>
             <th className="border border-gray-300 px-4 py-2">Paid</th>
-            <th className="border border-gray-300 px-4 py-2">Payment Type</th>
-            <th className="border border-gray-300 px-4 py-2">Remain</th>
+            <th className="border border-gray-300 px-4 py-2">Remaining</th>
             <th className="border border-gray-300 px-4 py-2">Date</th>
-            <th className="border border-gray-300 px-4 py-2">Payment</th>
+            <th className="border border-gray-300 px-4 py-2">Status</th>
           </tr>
         </thead>
         <tbody>
-          {filteredInvoices.map((invoice, index) => (
+          {filteredInvoices.map((invoice) => (
             <tr key={invoice.id}>
-              <td className="border border-gray-300 px-4 py-2">
-                <button className="bg-blue-500 text-white px-2 py-1 rounded hover:bg-blue-600">
-                  Pay All
-                </button>
-              </td>
-              <td className="border border-gray-300 px-4 py-2">{index + 1}</td>
               <td className="border border-gray-300 px-4 py-2">{invoice.invoiceNo}</td>
               <td className="border border-gray-300 px-4 py-2">{invoice.customer}</td>
-              <td className="border border-gray-300 px-4 py-2">{invoice.sex}</td>
-              <td className="border border-gray-300 px-4 py-2">{invoice.age}</td>
-              <td className="border border-gray-300 px-4 py-2">{invoice.amount}</td>
-              <td className="border border-gray-300 px-4 py-2">{invoice.discount}</td>
               <td className="border border-gray-300 px-4 py-2">{invoice.total}</td>
               <td className="border border-gray-300 px-4 py-2">{invoice.paid}</td>
-              <td className="border border-gray-300 px-4 py-2">{invoice.paymentType}</td>
               <td className="border border-gray-300 px-4 py-2">{invoice.remain}</td>
               <td className="border border-gray-300 px-4 py-2">{invoice.date}</td>
-              <td className="border border-gray-300 px-4 py-2">
-                <span
-                  className={`px-2 py-1 rounded text-white ${
-                    invoice.paymentStatus === "Unpaid"
-                      ? "bg-red-500"
-                      : "bg-green-500"
-                  }`}
-                >
-                  {invoice.paymentStatus}
-                </span>
+              <td className={`border px-4 py-2 text-white ${invoice.paymentStatus === "Unpaid" ? "bg-red-500" : "bg-green-500"}`}>
+                {invoice.paymentStatus}
               </td>
             </tr>
           ))}
         </tbody>
       </table>
-
-      <div className="mt-4 text-right">
-        <p>Showing {filteredInvoices.length} of {invoices.length} entries</p>
-      </div>
     </div>
   );
 };
 
-export default Finance;
+// Placeholder for Pharmacy Bill
+const PharmacyBill = () => <h1 className="text-2xl font-bold">Pharmacy Bill Page</h1>;
+
+export default FinanceDashboard;
